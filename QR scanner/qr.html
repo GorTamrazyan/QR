@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- Փաստաթղթի տիպի հայտարարություն (HTML5) -->
+<html lang="ru">
+<!-- Էջի հիմնական տարր՝ նշելով լեզուն (ռուսերեն) -->
+
+<head>
+    <!-- Գլխավոր բաժին, որը պարունակում է մետատվյալներ -->
+    <meta charset="UTF-8">
+    <!-- Նիշերի կոդավորման սահմանում (UTF-8) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Viewport կարգավորում հարմարեցված է բջջային սարքերի համար -->
+    <title>QR Code Scanner</title>
+    <!-- Էջի վերնագիր, որը երևում է բրաուզերի ներդիրում -->
+    <link rel="stylesheet" href="qr.css">
+    <!-- CSS ոճերի ֆայլի կապ -->
+</head>
+
+<body>
+    <!-- Էջի հիմնական բովանդակությունը -->
+    <h1>QR Code Scanner</h1>
+    <!-- Հիմնական վերնագիր (1-ին մակարդակ) -->
+
+    <!-- Բեռնման ցուցիչի տարր -->
+    <div class="loading" id="loading">Initializing camera...</div>
+    <!-- 
+        - class="loading" - ոճերի համար դասի անուն
+        - id="loading" - JavaScript-ում տարրի նույնականացման համար
+        - "Initializing camera..." - բեռնման հաղորդագրություն
+    -->
+
+    <!-- Վիդեո և canvas տարրերի պարունակիչ -->
+    <div class="video">
+        <!-- 
+            class="video" - ոճերի համար դասի անուն
+        -->
+        <video id="camera" playsinline autoplay></video>
+        <!-- 
+            - id="camera" - JavaScript-ում տարրի նույնականացման համար
+            - playsinline - iOS-ում վիդեոյի ներդրված ցուցադրում
+            - autoplay - ավտոմատ նվագարկում
+        -->
+        <canvas id="canvas"></canvas>
+        <!-- 
+            - id="canvas" - JavaScript-ում տարրի նույնականացման համար
+            - Օգտագործվում է QR կոդի վերլուծության համար
+        -->
+    </div>
+
+    <!-- Արդյունքների ցուցադրման տարր -->
+    <div id="result"></div>
+    <!-- 
+        - id="result" - JavaScript-ում տարրի նույնականացման համար
+        - Այստեղ կցուցադրվեն սկանավորման արդյունքները
+    -->
+
+    <!-- Կառավարման կոճակներ -->
+    <div>
+        <button id="startBtn">Start Scanner</button>
+        <!-- 
+            - id="startBtn" - JavaScript-ում տարրի նույնականացման համար
+            - Սկաների մեկնարկի կոճակ
+        -->
+        <button id="stopBtn" disabled>Stop Scanner</button>
+        <!-- 
+            - id="stopBtn" - JavaScript-ում տարրի նույնականացման համար
+            - disabled - սկզբնական վիճակում անջատված է
+            - Սկաների դադարեցման կոճակ
+        -->
+    </div>
+
+    <!-- Սքրինշոթների պահոց -->
+    <div class="snapshot-container" id="snapshotContainer"></div>
+    <!-- 
+        - class="snapshot-container" - ոճերի համար դասի անուն
+        - id="snapshotContainer" - JavaScript-ում տարրի նույնականացման համար
+        - Այստեղ կցուցադրվեն հայտնաբերված QR կոդերի պատկերները
+    -->
+
+    <!-- Արտաքին գրադարանների և սկրիպտների կապեր -->
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <!-- 
+        - jsQR գրադարան CDN-ից
+        - Օգտագործվում է QR կոդերի վերլուծության համար
+    -->
+    <script src="qr.js"></script>
+    <!-- 
+        - Հիմնական JavaScript ֆայլ
+        - Պարունակում է սկաների տրամաբանությունը
+    -->
+</body>
+
+</html>
